@@ -1,0 +1,62 @@
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Verification</title>
+</head>
+
+<body>
+    <h1>Password Verification</h1>
+    <form id="passwordForm">
+        <!-- Input fields for password and password confirmation -->
+        <div>
+            <label for="password">Enter password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <label for="confirmPassword">Re-enter password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- JavaScript code -->
+    <script>
+        // Get a reference to the form
+        const form = document.getElementById("passwordForm");
+
+        // Function to handle form submission
+        function handleSubmit(event) {
+            // Prevent the default form submission
+            event.preventDefault();
+
+            // Get password and confirm password values
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            // Check if the password is at least 8 characters long
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters long.");
+                return;
+            }
+
+            // Check if the passwords match
+            if (password !== confirmPassword) {
+                alert("Passwords do not match. Please try again.");
+                return;
+            }
+
+            // If the passwords match and meet the length requirement
+            alert("Two passwords match.");
+        }
+
+        // Attach the submit event listener to the form
+        form.addEventListener("submit", handleSubmit);
+    </script>
+</body>
+
+</html>
+

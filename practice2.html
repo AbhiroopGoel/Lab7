@@ -1,0 +1,82 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Control</title>
+    <style>
+        /* Initial styling for the paragraph */
+        p {
+            padding: 10px;
+            border-style: solid;
+            border-color: black;
+            border-width: 2px;
+            width: 60%;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Paragraph with dummy text -->
+    <p id="paragraph">
+        Hello! This is the Dummy Paragraph. Input the values below so you can change the way i look!
+    </p>
+
+    <!-- Inputs for RGB values and border width -->
+    <div>
+        <label for="textColor">Text RGB : </label>
+        <input type="text" id="textColor" placeholder="e.g., 255,0,0">
+    </div>
+    <div>
+        <label for="borderColor">Border RGB : </label>
+        <input type="text" id="borderColor" placeholder="e.g., 0,0,255">
+    </div>
+    <div>
+        <label for="borderWidth">Border Width: </label>
+        <input type="number" id="borderWidth" placeholder="e.g., 3">
+    </div>
+
+    <!-- JavaScript to handle input changes -->
+    <script>
+        // Get references to input fields and paragraph
+        const textColorInput = document.getElementById("textColor");
+        const borderColorInput = document.getElementById("borderColor");
+        const borderWidthInput = document.getElementById("borderWidth");
+        const paragraph = document.getElementById("paragraph");
+
+        // Function to update paragraph styles
+        function updateStyles() {
+            // Get RGB values from the input fields
+            const textColor = textColorInput.value.trim();
+            const borderColor = borderColorInput.value.trim();
+            
+            // Get border width from the input field
+            const borderWidth = borderWidthInput.value.trim();
+
+            // Update the text color of the paragraph
+            if (textColor) {
+                paragraph.style.color = `rgb(${textColor})`;
+            }
+
+            // Update the border color of the paragraph
+            if (borderColor) {
+                paragraph.style.borderColor = `rgb(${borderColor})`;
+            }
+
+            // Update the border width of the paragraph
+            if (borderWidth) {
+                paragraph.style.borderWidth = `${borderWidth}px`;
+            }
+        }
+
+        // Add event listeners to input fields
+        textColorInput.addEventListener("input", updateStyles);
+        borderColorInput.addEventListener("input", updateStyles);
+        borderWidthInput.addEventListener("input", updateStyles);
+    </script>
+</body>
+
+</html>
+
